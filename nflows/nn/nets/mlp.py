@@ -26,8 +26,8 @@ class MLP(nn.Module):
             activate_output: bool, whether to apply the activation to the output.
         """
         super().__init__()
-        self._in_shape = torch.Size(in_shape)
-        self._out_shape = torch.Size(out_shape)
+        self._in_shape = torch.Size([in_shape])
+        self._out_shape = torch.Size([out_shape])
         self._hidden_sizes = hidden_sizes
         self._activation = activation
         self._activate_output = activate_output
