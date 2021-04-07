@@ -52,7 +52,7 @@ class CouplingTransform(Transform):
         self.transform_net = transform_net_create_fn(
             self.num_identity_features,
             self.num_transform_features * self._transform_dim_multiplier(),
-            hidden_sizes= [16,16,16]
+            hidden_features= 32
         )
 
         if unconditional_transform is None:
