@@ -88,8 +88,8 @@ class ConditionalDiagonalNormal(Distribution):
             )
 
         split = params.shape[-1] // 2
-        means = params[..., :split].reshape(params.shape[0], *self._shape)
-        log_stds = params[..., split:].reshape(params.shape[0], *self._shape)
+        means = params[..., :split]#.reshape(params.shape[0], *self._shape)
+        log_stds = params[..., split:]#.reshape(params.shape[0], *self._shape)
         return means, log_stds
 
     def _log_prob(self, inputs, context):
