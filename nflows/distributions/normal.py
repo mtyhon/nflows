@@ -116,10 +116,15 @@ class ConditionalDiagonalNormal(Distribution):
     def _sample(self, num_samples, context):
         # Compute parameters.
         means, log_stds = self._compute_params(context)
+        print('Means Size: ', means.size())
+        print('Log Std Size: ', log_stds.size())
+
         stds = torch.exp(log_stds)
         means = torchutils.repeat_rows(means, num_samples)
         stds = torchutils.repeat_rows(stds, num_samples)
-
+        print('Means Repeat Size: ', means.size())
+        print('Log Repeat Std Size: ', log_stds.size())
+        
         # Generate samples.
         context_size = context.shape[0]
         noise = torch.randn(context_size * num_samples, *
