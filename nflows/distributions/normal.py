@@ -129,7 +129,12 @@ class ConditionalDiagonalNormal(Distribution):
         context_size = context.shape[0]
         noise = torch.randn(context_size * num_samples, *
                             self._shape, device=means.device)
+        print('context_size: ', context_size)
+        print('noise size: ', noise.size())
+
         samples = means + stds * noise
+        print('samples size: ', samples.size())
+
         return torchutils.split_leading_dim(samples, [context_size, num_samples])
 
     def _mean(self, context):
